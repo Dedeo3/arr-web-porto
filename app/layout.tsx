@@ -3,7 +3,7 @@ import "./globals.css"
 import Navigation from "@/components/navigation"
 
 export const metadata = {
-  title: "John Doe - Developer & Creative",
+  title: "Arr - Mobile and Back-end Developer",
   description: "Personal website showcasing my work and experience",
 }
 
@@ -14,6 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+         <link rel="icon" href="/profile.png" type="image/png"/>
+      </head>
       <body>
         <Navigation />
         <main className="main-content">{children}</main>

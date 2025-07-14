@@ -1,8 +1,12 @@
+"use client"
+
 import Image from "next/image"
 
 
 
 export default function Home() {
+
+  
   return (
     <div className="home-container">
       <div className="hero-section">
@@ -24,9 +28,9 @@ export default function Home() {
                         I have strong experience in developing various applications, from designing intuitive mobile interfaces using <span className="tech-highlight">Kotlin with Jetpack Compose</span> and <span className="tech-highlight">Flutter</span>, also building robust back-end systems with <span className="tech-highlight">Node.js and Express</span>. I thrive in <span className="highlight">collaborative environments</span> and am always eager to <span className="highlight">learn new technologies</span>, improve my skills, and contribute meaningfully to any team or project I&apos;m part of.
                     </p>
           <div className="hero-buttons">
-            <a href="/projects" className="btn btn-primary">
-              Download CV
-            </a>
+           <button onClick={downloadFile} className="btn btn-primary">
+             Download CV
+            </button>
             <a href="https://github.com/Dedeo3" target="_blank" className="btn btn-secondary">
               Github
             </a>
@@ -36,3 +40,11 @@ export default function Home() {
     </div>
   )
 }
+
+
+function downloadFile() {
+      const link = document.createElement('a');
+      link.href = "/Yoannes_De_Deo_Haryo_Wibisono_Mobile developer_CV_UPDATE.pdf"; 
+      link.download = 'Yoannes_De_Deo_Haryo_Wibisono_CV.pdf';
+      link.click();
+    }
