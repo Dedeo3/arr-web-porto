@@ -18,7 +18,7 @@ export default function Navigation() {
   return (
     <nav className="navigation">
       <div className="nav-container">
-        <Link href="/" className="nav-logo">
+        <Link href="https://www.linkedin.com/in/yoannes-de-deo-haryo-wibisono-ba237a263/" target="_blank" className="nav-logo">
           Arr
         </Link>
 

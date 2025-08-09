@@ -166,176 +166,173 @@ export default function Home() {
       )}
 
       <style jsx>{`
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: rgba(0, 0, 0, 0.7);
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          z-index: 1000;
-          backdrop-filter: blur(4px);
-        }
+  /* ===== Modal Overlay ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: fadeIn .18s ease-out;
+  }
+  @keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
 
-        .modal-content {
-          background: white;
-          border-radius: 16px;
-          max-width: 500px;
-          width: 90%;
-          max-height: 90vh;
-          overflow-y: auto;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-          animation: modalAppear 0.3s ease-out;
-        }
+  /* ===== Modal Card ===== */
+  .modal-content {
+    width: min(520px, 92vw);
+    max-height: 88vh;
+    overflow: hidden auto;
+    border-radius: 18px;
+    background: rgba(15,15,17,0.92);
+    color: #e5e7eb;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+    animation: modalAppear .26s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    isolation: isolate;
+  }
+  .modal-content::before{
+    content:"";
+    position:absolute; inset:-1px;
+    border-radius: 18px;
+    background: conic-gradient(from 180deg at 50% 50%, rgba(99,102,241,.25), rgba(168,85,247,.22), transparent 70%);
+    filter: blur(18px);
+    opacity: .45;
+    z-index: -1;
+    pointer-events:none;
+  }
+  @keyframes modalAppear {
+    from { opacity: 0; transform: translateY(14px) scale(.98) }
+    to   { opacity: 1; transform: translateY(0) scale(1) }
+  }
 
-        @keyframes modalAppear {
-          from {
-            opacity: 0;
-            transform: scale(0.9) translateY(-20px);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1) translateY(0);
-          }
-        }
+  /* ===== Header ===== */
+  .modal-header {
+    padding: 18px 20px 14px 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .modal-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .2px;
+    background: linear-gradient(135deg,#fff,#d1d5db);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color: transparent;
+  }
+  .modal-close {
+    background: transparent;
+    border: 0;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+    color: #a1a1aa;
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: 10px;
+    transition: transform .15s ease, background .15s ease, color .15s ease;
+    outline: none;
+  }
+  .modal-close:hover { background: rgba(255,255,255,.06); color: #fff; transform: translateY(-1px) }
+  .modal-close:focus-visible { outline: 3px solid rgba(99,102,241,.5); outline-offset: 2px }
 
-        .modal-header {
-          padding: 24px 24px 0 24px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid #e5e7eb;
-          margin-bottom: 20px;
-        }
+  /* ===== Body ===== */
+  .modal-body { padding: 16px 20px 20px 20px }
+  .modal-body p {
+    margin: 0 0 16px 0;
+    color: #a3a3a3;
+    font-size: 15px;
+  }
 
-        .modal-header h3 {
-          margin: 0;
-          font-size: 24px;
-          font-weight: 700;
-          color: #1f2937;
-        }
+  /* ===== Options ===== */
+  .cv-options { display: grid; gap: 12px }
+  .cv-option-btn {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(20,20,22,0.85);
+    color: #e5e7eb;
+    cursor: pointer;
+    text-align: left;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cv-option-btn::before{
+    content:"";
+    position:absolute; inset:0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    transition: transform .6s cubic-bezier(.2,.8,.2,1);
+    pointer-events:none;
+  }
+  .cv-option-btn:hover::before{ transform: translateX(100%) }
+  .cv-option-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    background: rgba(26,26,28,0.95);
+    border-color: rgba(99,102,241,.35);
+  }
 
-        .modal-close {
-          background: none;
-          border: none;
-          font-size: 32px;
-          cursor: pointer;
-          color: #6b7280;
-          padding: 0;
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 8px;
-          transition: all 0.2s ease;
-        }
+  /* Variant hover accents */
+  .cv-option-btn.mobile:hover   { border-color: rgba(16,185,129,.55); box-shadow: 0 16px 40px rgba(16,185,129,.18) }
+  .cv-option-btn.backend:hover  { border-color: rgba(245,158,11,.55); box-shadow: 0 16px 40px rgba(245,158,11,.18) }
+  .cv-option-btn.fullstack:hover{ border-color: rgba(139,92,246,.55); box-shadow: 0 16px 40px rgba(139,92,246,.18) }
+  .cv-option-btn.all:hover      { border-color: rgba(239,68,68,.55);  box-shadow: 0 16px 40px rgba(239,68,68,.18) }
 
-        .modal-close:hover {
-          background-color: #f3f4f6;
-          color: #1f2937;
-        }
+  .cv-icon {
+    font-size: 26px;
+    width: 48px; height: 48px;
+    display: grid; place-items: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .cv-option-btn h4 {
+    margin: 0 0 2px 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .cv-option-btn p {
+    margin: 0;
+    font-size: 13.5px;
+    color: #a3a3a3;
+  }
 
-        .modal-body {
-          padding: 0 24px 24px 24px;
-        }
+  /* Focus state for keyboard users */
+  .cv-option-btn:focus-visible {
+    outline: 3px solid rgba(99,102,241,.5);
+    outline-offset: 2px;
+  }
 
-        .modal-body p {
-          margin: 0 0 20px 0;
-          color: #6b7280;
-          font-size: 16px;
-        }
+  /* ===== Mobile ===== */
+  @media (max-width: 640px) {
+    .modal-content { width: calc(100% - 28px); margin: 14px }
+    .cv-option-btn {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 10px;
+      padding: 16px;
+    }
+    .cv-icon { margin: 0 auto }
+  }
 
-        .cv-options {
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-        }
+  /* ===== Reduced Motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .modal-overlay, .modal-content, .cv-option-btn { animation: none !important; transition: none !important }
+  }
+`}</style>
 
-        .cv-option-btn {
-          display: flex;
-          align-items: center;
-          gap: 16px;
-          padding: 16px;
-          border: 2px solid #e5e7eb;
-          background: white;
-          border-radius: 12px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-align: left;
-          width: 100%;
-        }
-
-        .cv-option-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-          border-color: #3b82f6;
-        }
-
-        .cv-option-btn.mobile:hover {
-          border-color: #10b981;
-          box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
-        }
-
-        .cv-option-btn.backend:hover {
-          border-color: #f59e0b;
-          box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
-        }
-
-        .cv-option-btn.fullstack:hover {
-          border-color: #8b5cf6;
-          box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
-        }
-
-        .cv-option-btn.all:hover {
-          border-color: #ef4444;
-          box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2);
-        }
-
-        .cv-icon {
-          font-size: 32px;
-          min-width: 48px;
-          height: 48px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: #f8fafc;
-          border-radius: 10px;
-        }
-
-        .cv-option-btn h4 {
-          margin: 0 0 4px 0;
-          font-size: 18px;
-          font-weight: 600;
-          color: #1f2937;
-        }
-
-        .cv-option-btn p {
-          margin: 0;
-          font-size: 14px;
-          color: #6b7280;
-        }
-
-        @media (max-width: 640px) {
-          .modal-content {
-            margin: 16px;
-            width: calc(100% - 32px);
-          }
-          
-          .cv-option-btn {
-            flex-direction: column;
-            text-align: center;
-            gap: 8px;
-          }
-          
-          .cv-icon {
-            min-width: auto;
-          }
-        }
-      `}</style>
     </div>
   )
 }
