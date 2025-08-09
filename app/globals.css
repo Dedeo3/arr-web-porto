@@ -73,36 +73,154 @@ body::after {
 }
 @keyframes bgFloat { from { filter: hue-rotate(0); } to { filter: hue-rotate(30deg); } }
 
-/* ======== Navigation ======== */
-.navigation {
-  position: fixed; inset: 0 0 auto 0; z-index: 1000;
-  background: color-mix(in oklab, var(--surface-strong) 82%, transparent);
-  border-bottom: 1px solid var(--border);
-  transition: background var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
-  backdrop-filter: blur(18px);
-}
-.navigation.scrolled { background: rgba(10,10,10,0.96); box-shadow: 0 8px 32px rgba(0,0,0,.35); }
+ /* Navigation */
+        .navigation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
 
-.nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .navigation.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
 
-.nav-logo { font-size: var(--step-2); font-weight: 800; color: #fff; text-decoration: none; position: relative; isolation: isolate; display:inline-block; }
-.nav-logo::after { content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent); transform: translateX(-100%); transition: transform .5s var(--ease-out); z-index:-1; }
-.nav-logo:hover::after { transform: translateX(100%); }
-.nav-logo:hover { color: var(--brand); transform: translateY(-1px); }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.nav-menu { display:flex; gap: 1.25rem; align-items:center; }
-.nav-link { color: var(--text); text-decoration:none; font-weight: 600; position:relative; padding:.55rem 1rem; border-radius: 999px; transition: transform var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out); }
-.nav-link::before { content:""; position:absolute; inset:0; width:0%; border-radius: 999px; z-index:-1; background: linear-gradient(45deg, var(--brand), var(--brand-2)); transition: width var(--dur-2) var(--ease-out); }
-.nav-link:hover::before, .nav-link-active::before { width:100%; }
-.nav-link:hover, .nav-link-active { color: #fff; transform: translateY(-2px); }
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-.nav-toggle { display:none; background:none; border:none; cursor:pointer; padding:.5rem; }
-.hamburger { width: 26px; height: 3px; border-radius:2px; background: linear-gradient(45deg, var(--brand), var(--brand-2)); position:relative; transition: all var(--dur-2) var(--ease-out); }
-.hamburger::before, .hamburger::after { content:""; position:absolute; left:0; right:0; height:3px; border-radius:2px; background: inherit; transition: inherit; }
-.hamburger::before { top:-8px; } .hamburger::after { bottom:-8px; }
-.hamburger-open { background: transparent; }
-.hamburger-open::before { transform: rotate(45deg) translateY(8px); }
-.hamburger-open::after { transform: rotate(-45deg) translateY(-8px); }
+        .nav-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-logo:hover::before {
+            left: 100%;
+        }
+
+        .nav-logo:hover {
+            color: #4f46e5;
+            transform: scale(1.05);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: #e5e5e5;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-link:hover::before,
+        .nav-link-active::before {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link-active {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: all 0.3s ease;
+            position: relative;
+            border-radius: 2px;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .hamburger::before {
+            top: -8px;
+        }
+
+        .hamburger::after {
+            bottom: -8px;
+        }
+
+        .hamburger-open {
+            background-color: transparent;
+        }
+
+        .hamburger-open::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .hamburger-open::after {
+            transform: rotate(-45deg);
+            bottom: 0;
+        }
+
 
 /* ======== Main ======== */
 .main-content { margin-top: 80px; min-height: calc(100vh - 80px); }
