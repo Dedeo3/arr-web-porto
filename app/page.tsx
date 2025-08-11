@@ -22,17 +22,17 @@ export default function Home() {
         fileName = "/Yoannes De Deo Haryo Wibisono - Mobile developer - CV.pdf";
         downloadName = 'Yoannes_De_Deo_Haryo_Wibisono_Mobile_CV.pdf';
         break;
-      case 'fullstack':
-        fileName = "/Yoannes De Deo Haryo Wibisono - Full-stack Developer - CV.pdf";
-        downloadName = 'Yoannes_De_Deo_Haryo_Wibisono_Fullstack_CV.pdf';
+      case 'generalis':
+        fileName = "/Yoannes De Deo Haryo Wibisono - Mobile & Backend Developer - CV.pdf";
+        downloadName = 'Yoannes_De_Deo_Haryo_Wibisono_generalist_CV.pdf';
         break;
       case 'all':
         // Download semua CV
         downloadMultipleFiles();
         return;
       default:
-        fileName = "/Yoannes De Deo Haryo Wibisono - Full-stack Developer - CV.pdf";
-        downloadName = 'Yoannes_De_Deo_Haryo_Wibisono_Fullstack_CV.pdf';
+        fileName = "/Yoannes De Deo Haryo Wibisono - Mobile & Backend Developer - CV.pdf";
+        downloadName = 'Yoannes_De_Deo_Haryo_Wibisono_generalist_CV.pdf';
     }
     
     const link = document.createElement('a');
@@ -54,8 +54,8 @@ export default function Home() {
         name: "Yoannes_De_Deo_Haryo_Wibisono_Mobile_CV.pdf"
       },
       {
-        path: "/Yoannes De Deo Haryo Wibisono - Full-stack Developer - CV.pdf",
-        name: "Yoannes_De_Deo_Haryo_Wibisono_Fullstack_CV.pdf"
+        path: "/Yoannes De Deo Haryo Wibisono - Mobile & Backend Developer - CV.pdf",
+        name: "Yoannes_De_Deo_Haryo_Wibisono_generalist_CV.pdf"
       }
     ];
 
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
         <div className="hero-content">
           <h1 className="hero-title">Yoannes De Deo Haryo Wibisono</h1>
-          <h2 className="hero-subtitle">Full-stack Developer</h2>
+          <h2 className="hero-subtitle">Mobile dan Backend Developer</h2>
            <p className="hero-description">
                         Currently, I am a <span className="highlight">fresh graduate</span> with a Bachelor&apos;s degree in <span className="highlight">Informatics</span>. As a <span className="role-highlight">programmer</span>, I love <span className="highlight">solving problems</span> not only in code but also in everyday situations. I&apos;m passionate about both <span className="tech-highlight">mobile</span> and <span className="tech-highlight">back-end development</span>, and I enjoy building products that are not only functional but also <span className="highlight">impactful</span>.
                         <br></br>
@@ -139,13 +139,13 @@ export default function Home() {
                 </button>
                 
                 <button 
-                  onClick={() => downloadFile('fullstack')} 
+                  onClick={() => downloadFile('generalis')} 
                   className="cv-option-btn fullstack"
                 >
                   <span className="cv-icon">🔧</span>
                   <div>
-                    <h4>Fullstack Developer</h4>
-                    <p>CV yang mencakup kemampuan Fullstack Development</p>
+                    <h4>Generalis</h4>
+                    <p>CV yang mencakup kemampuan mobile dan backend</p>
                   </div>
                 </button>
                 
