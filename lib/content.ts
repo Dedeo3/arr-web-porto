@@ -9,7 +9,7 @@ export const PROFILE = {
   bio: [
     "Passionate Mobile Developer with 1+ years of experience building high-performance Android apps (Kotlin / Jetpack Compose) and cross-platform solutions (Flutter / React Native). Proven in full-stack development, including RESTful API design (Node.js) and AI integration. Delivered projects 30% faster via Agile methodologies.",
     "I'm driven by a deep curiosity for technology and a strong desire to keep growing. In a world where tech evolves rapidly, I'm excited to continuously adapt, learn, and make the most of every innovation that comes my way.",
-  ],
+  ], 
 }
 
 export const CVS = [
